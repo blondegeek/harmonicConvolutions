@@ -16,7 +16,10 @@
    id="svg3344"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="figure1_translationalEquivariance.svg">
+   sodipodi:docname="figure1_translationalEquivariance.svg"
+   inkscape:export-filename="C:\Users\Stephan\Documents\GitHub\groupConvolutions\paperFigures\figure1_translationalEquivariance.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs3346">
     <linearGradient
@@ -47,7 +50,7 @@
        fx="54.526077"
        fy="49.926598"
        r="1.6662343"
-       gradientTransform="matrix(1,0,0,1.0344827,-1.0320423,59.952795)"
+       gradientTransform="matrix(1,0,0,1.0344827,-1.0320423,63.853059)"
        gradientUnits="userSpaceOnUse" />
     <radialGradient
        inkscape:collect="always"
@@ -58,7 +61,7 @@
        fx="54.526077"
        fy="49.926598"
        r="1.6662343"
-       gradientTransform="matrix(1,0,0,1.0344827,16.925434,59.952794)"
+       gradientTransform="matrix(1,0,0,1.0344827,16.925434,63.853058)"
        gradientUnits="userSpaceOnUse" />
     <radialGradient
        inkscape:collect="always"
@@ -69,7 +72,7 @@
        fx="54.526077"
        fy="49.926598"
        r="1.6662343"
-       gradientTransform="matrix(1,0,0,1.0344827,7.9060686,54.752438)"
+       gradientTransform="matrix(1,0,0,1.0344827,7.9060686,58.652702)"
        gradientUnits="userSpaceOnUse" />
     <radialGradient
        inkscape:collect="always"
@@ -80,7 +83,7 @@
        fx="54.526077"
        fy="49.926598"
        r="1.6662343"
-       gradientTransform="matrix(1,0,0,1.0344827,7.9060682,67.834588)"
+       gradientTransform="matrix(1,0,0,1.0344827,7.9060682,71.734852)"
        gradientUnits="userSpaceOnUse" />
     <radialGradient
        inkscape:collect="always"
@@ -91,7 +94,7 @@
        fx="54.526077"
        fy="49.926598"
        r="1.6662343"
-       gradientTransform="matrix(1,0,0,1.0344827,0.27173436,82.624299)"
+       gradientTransform="matrix(1,0,0,1.0344827,0.27173436,86.524563)"
        gradientUnits="userSpaceOnUse" />
     <radialGradient
        inkscape:collect="always"
@@ -102,7 +105,7 @@
        fx="54.526077"
        fy="49.926598"
        r="1.6662343"
-       gradientTransform="matrix(1,0,0,1.0344827,14.32218,82.739212)"
+       gradientTransform="matrix(1,0,0,1.0344827,14.32218,86.639476)"
        gradientUnits="userSpaceOnUse" />
     <radialGradient
        inkscape:collect="always"
@@ -113,7 +116,7 @@
        fx="54.526077"
        fy="49.926598"
        r="1.6662343"
-       gradientTransform="matrix(1,0,0,1.0344827,7.9060698,60.034053)"
+       gradientTransform="matrix(1,0,0,1.0344827,7.9060698,63.934317)"
        gradientUnits="userSpaceOnUse" />
     <radialGradient
        inkscape:collect="always"
@@ -124,7 +127,7 @@
        fx="54.526077"
        fy="49.926598"
        r="1.6662343"
-       gradientTransform="matrix(1,0,0,1.0344827,163.92385,59.65529)"
+       gradientTransform="matrix(1,0,0,1.0344827,163.92385,63.555554)"
        gradientUnits="userSpaceOnUse" />
     <radialGradient
        inkscape:collect="always"
@@ -135,7 +138,7 @@
        fx="54.526077"
        fy="49.926598"
        r="1.6662343"
-       gradientTransform="matrix(1,0,0,1.0344827,170.3401,82.36045)"
+       gradientTransform="matrix(1,0,0,1.0344827,170.3401,86.260714)"
        gradientUnits="userSpaceOnUse" />
     <radialGradient
        inkscape:collect="always"
@@ -146,7 +149,7 @@
        fx="54.526077"
        fy="49.926598"
        r="1.6662343"
-       gradientTransform="matrix(1,0,0,1.0344827,156.28935,82.245537)"
+       gradientTransform="matrix(1,0,0,1.0344827,156.28935,86.145801)"
        gradientUnits="userSpaceOnUse" />
     <radialGradient
        inkscape:collect="always"
@@ -157,7 +160,7 @@
        fx="54.526077"
        fy="49.926598"
        r="1.6662343"
-       gradientTransform="matrix(1,0,0,1.0344827,163.92385,67.455825)"
+       gradientTransform="matrix(1,0,0,1.0344827,163.92385,71.356089)"
        gradientUnits="userSpaceOnUse" />
     <radialGradient
        inkscape:collect="always"
@@ -168,7 +171,7 @@
        fx="54.526077"
        fy="49.926598"
        r="1.6662343"
-       gradientTransform="matrix(1,0,0,1.0344827,163.92385,54.373676)"
+       gradientTransform="matrix(1,0,0,1.0344827,163.92385,58.27394)"
        gradientUnits="userSpaceOnUse" />
     <radialGradient
        inkscape:collect="always"
@@ -179,7 +182,7 @@
        fx="54.526077"
        fy="49.926598"
        r="1.6662343"
-       gradientTransform="matrix(1,0,0,1.0344827,172.94341,59.574033)"
+       gradientTransform="matrix(1,0,0,1.0344827,172.94341,63.474297)"
        gradientUnits="userSpaceOnUse" />
     <radialGradient
        inkscape:collect="always"
@@ -190,7 +193,7 @@
        fx="54.526077"
        fy="49.926598"
        r="1.6662343"
-       gradientTransform="matrix(1,0,0,1.0344827,154.98555,59.574033)"
+       gradientTransform="matrix(1,0,0,1.0344827,154.98555,63.474297)"
        gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
@@ -201,8 +204,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.86831672"
-     inkscape:cx="475.46275"
-     inkscape:cy="402.48415"
+     inkscape:cx="358.03593"
+     inkscape:cy="410.31074"
      inkscape:current-layer="layer1"
      id="namedview3348"
      showgrid="false"
@@ -224,7 +227,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -282,49 +285,49 @@
        style="fill:url(#radialGradient4250);fill-opacity:1"
        id="path4234"
        cx="53.494034"
-       cy="111.60107"
+       cy="115.50131"
        rx="1.6662343"
        ry="1.7236905" />
     <ellipse
        style="fill:url(#radialGradient4250-4);fill-opacity:1"
        id="path4234-6"
        cx="71.451515"
-       cy="111.60107"
+       cy="115.50131"
        rx="1.6662343"
        ry="1.7236905" />
     <ellipse
        style="fill:url(#radialGradient4250-7);fill-opacity:1"
        id="path4234-8"
        cx="62.432144"
-       cy="106.40076"
+       cy="110.301"
        rx="1.6662343"
        ry="1.7236905" />
     <ellipse
        style="fill:url(#radialGradient4250-4-5);fill-opacity:1"
        id="path4234-6-4"
        cx="62.432144"
-       cy="119.48282"
+       cy="123.38306"
        rx="1.6662343"
        ry="1.7236905" />
     <ellipse
        style="fill:url(#radialGradient4250-42);fill-opacity:1"
        id="path4234-0"
        cx="54.797813"
-       cy="134.27257"
+       cy="138.1729"
        rx="1.6662343"
        ry="1.7236905" />
     <ellipse
        style="fill:url(#radialGradient4250-4-0);fill-opacity:1"
        id="path4234-6-1"
        cx="68.848259"
-       cy="134.38753"
+       cy="138.28786"
        rx="1.6662343"
        ry="1.7236905" />
     <ellipse
        style="fill:url(#radialGradient4250-4-08);fill-opacity:1"
        id="path4234-6-2"
        cx="62.432148"
-       cy="111.68233"
+       cy="115.58257"
        rx="1.6662343"
        ry="1.7236905" />
     <ellipse
@@ -379,61 +382,61 @@
        width="83.196793"
        height="56.996708"
        x="45.39024"
-       y="92.329391" />
+       y="96.22963" />
     <rect
        style="fill:#0000ff;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.28222221px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="rect3353-9-2"
        width="83.196793"
        height="56.996708"
        x="153.63858"
-       y="92.329391" />
+       y="96.22963" />
     <ellipse
        style="fill:url(#radialGradient4250-1);fill-opacity:1"
        id="path4234-1"
        cx="209.51176"
-       cy="111.22231"
+       cy="115.12255"
        rx="1.6662343"
        ry="1.7236905" />
     <ellipse
        style="fill:url(#radialGradient4250-4-2);fill-opacity:1"
        id="path4234-6-9"
        cx="227.46927"
-       cy="111.22231"
+       cy="115.12255"
        rx="1.6662343"
        ry="1.7236905" />
     <ellipse
        style="fill:url(#radialGradient4250-7-2);fill-opacity:1"
        id="path4234-8-8"
        cx="218.44989"
-       cy="106.022"
+       cy="109.92224"
        rx="1.6662343"
        ry="1.7236905" />
     <ellipse
        style="fill:url(#radialGradient4250-4-5-2);fill-opacity:1"
        id="path4234-6-4-6"
        cx="218.44989"
-       cy="119.10406"
+       cy="123.0043"
        rx="1.6662343"
        ry="1.7236905" />
     <ellipse
        style="fill:url(#radialGradient4250-42-5);fill-opacity:1"
        id="path4234-0-1"
        cx="210.81555"
-       cy="133.8938"
+       cy="137.79413"
        rx="1.6662343"
        ry="1.7236905" />
     <ellipse
        style="fill:url(#radialGradient4250-4-0-4);fill-opacity:1"
        id="path4234-6-1-3"
        cx="224.86601"
-       cy="134.00876"
+       cy="137.90909"
        rx="1.6662343"
        ry="1.7236905" />
     <ellipse
        style="fill:url(#radialGradient4250-4-08-7);fill-opacity:1"
        id="path4234-6-2-5"
        cx="218.44989"
-       cy="111.30357"
+       cy="115.20381"
        rx="1.6662343"
        ry="1.7236905" />
     <text
@@ -446,47 +449,51 @@
          sodipodi:role="line"
          id="tspan4536"
          x="144.72365"
-         y="35.495197">I<tspan
-   style="font-size:18.34444404%;baseline-shift:sub"
+         y="35.495197"
+         style="-inkscape-font-specification:arial;font-family:arial;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">I<tspan
+   style="font-size:5.64444448px;baseline-shift:sub;-inkscape-font-specification:arial;font-family:arial;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
    id="tspan4592">2</tspan></tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:11.28888893px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;font-size:11.28888893px;line-height:135%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
        x="36.670845"
        y="35.269012"
        id="text4534-2"
-       sodipodi:linespacing="125%"><tspan
+       sodipodi:linespacing="135%"><tspan
          sodipodi:role="line"
          id="tspan4536-4"
          x="36.670845"
-         y="35.269012">I<tspan
-   style="font-size:2.07088399px;baseline-shift:sub"
+         y="35.269012"
+         style="-inkscape-font-specification:Arial;font-family:Arial;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">I<tspan
+   style="font-size:5.64444448px;baseline-shift:sub;line-height:135%;-inkscape-font-specification:Arial;font-family:Arial;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
    id="tspan4538">1</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:11.28888893px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="35.370754"
-       y="100.51723"
+       y="104.41747"
        id="text4534-3"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan4536-9"
          x="35.370754"
-         y="100.51723">f<tspan
-   style="font-size:2.07088399px;baseline-shift:sub"
+         y="104.41747"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:arial;-inkscape-font-specification:arial">f<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:arial;-inkscape-font-specification:arial;baseline-shift:sub"
    id="tspan4538-7">1</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:11.28888893px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="144.2532"
-       y="100.51723"
+       y="104.41747"
        id="text4534-3-8"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan4536-9-9"
          x="144.2532"
-         y="100.51723">f<tspan
-   style="font-size:18.34444455%;baseline-shift:sub"
+         y="104.41747"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">f<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:Arial;-inkscape-font-specification:Arial;baseline-shift:sub"
    id="tspan4635">2</tspan></tspan></text>
     <rect
        style="fill:#111111;fill-opacity:0.97041422"
@@ -511,29 +518,32 @@
        x="140.49791"
        y="-59.121498"
        transform="matrix(0.73988596,0.67273231,-0.67273231,0.73988596,0,0)" />
-    <rect
-       style="fill:#111111;fill-opacity:0.97041423"
-       id="rect8569-1"
-       width="15.628128"
-       height="2.2982543"
-       x="132.94753"
-       y="121.52114" />
-    <rect
-       style="fill:#000002;fill-opacity:1"
-       id="rect8569-9-1"
-       width="8.721406"
-       height="2.2982543"
-       x="6.8231978"
-       y="190.53427"
-       transform="matrix(0.69355434,-0.72040431,0.72040431,0.69355434,0,0)" />
-    <rect
-       style="fill:#000002;fill-opacity:1"
-       id="rect8569-9-6-1"
-       width="8.721406"
-       height="2.2982543"
-       x="184.39339"
-       y="-10.189511"
-       transform="matrix(0.73988596,0.67273231,-0.67273231,0.73988596,0,0)" />
+    <g
+       id="g4200">
+      <rect
+         y="125.42138"
+         x="132.94753"
+         height="2.2982543"
+         width="15.628128"
+         id="rect8569-1"
+         style="fill:#111111;fill-opacity:0.97041423" />
+      <rect
+         transform="matrix(0.69355434,-0.72040431,0.72040431,0.69355434,0,0)"
+         y="193.23929"
+         x="4.0134273"
+         height="2.2982543"
+         width="8.721406"
+         id="rect8569-9-1"
+         style="fill:#000002;fill-opacity:1" />
+      <rect
+         transform="matrix(0.73988596,0.67273231,-0.67273231,0.73988596,0,0)"
+         y="-7.3037577"
+         x="187.01729"
+         height="2.2982543"
+         width="8.721406"
+         id="rect8569-9-6-1"
+         style="fill:#000002;fill-opacity:1" />
+    </g>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:11.28888893px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -544,13 +554,68 @@
          sodipodi:role="line"
          id="tspan8643"
          x="32.502216"
-         y="13.361561">Translational Equivariance</tspan></text>
+         y="13.361561"
+         style="-inkscape-font-specification:Arial;font-family:Arial;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Translational Equivariance</tspan></text>
     <rect
-       style="fill:#000002;fill-opacity:0;stroke:#000000;stroke-width:0.92776191;stroke-opacity:1"
+       style="fill:#000002;fill-opacity:0;stroke:#000000;stroke-width:0.93226916;stroke-opacity:1"
        id="rect8645"
-       width="218.16214"
-       height="138.20668"
-       x="32.79113"
-       y="19.500862" />
+       width="215.23244"
+       height="141.45239"
+       x="32.793381"
+       y="19.503117" />
+    <g
+       transform="matrix(2.7708915e-4,0.51606896,-0.49857686,2.8681056e-4,257.8867,17.171309)"
+       id="g4200-1">
+      <rect
+         y="125.42138"
+         x="132.94753"
+         height="2.2982543"
+         width="15.628128"
+         id="rect8569-1-3"
+         style="fill:#111111;fill-opacity:0.97041423" />
+      <rect
+         transform="matrix(0.69355434,-0.72040431,0.72040431,0.69355434,0,0)"
+         y="193.23929"
+         x="4.0134273"
+         height="2.2982543"
+         width="8.721406"
+         id="rect8569-9-1-3"
+         style="fill:#000002;fill-opacity:1" />
+      <rect
+         transform="matrix(0.73988596,0.67273231,-0.67273231,0.73988596,0,0)"
+         y="-7.3037577"
+         x="187.01729"
+         height="2.2982543"
+         width="8.721406"
+         id="rect8569-9-6-1-9"
+         style="fill:#000002;fill-opacity:1" />
+    </g>
+    <g
+       transform="matrix(2.7708915e-4,0.51606896,-0.49857686,2.8681116e-4,146.78721,17.377506)"
+       id="g4200-1-6">
+      <rect
+         y="125.42138"
+         x="132.94753"
+         height="2.2982543"
+         width="15.628128"
+         id="rect8569-1-3-7"
+         style="fill:#111111;fill-opacity:0.97041423" />
+      <rect
+         transform="matrix(0.69355434,-0.72040431,0.72040431,0.69355434,0,0)"
+         y="193.23929"
+         x="4.0134273"
+         height="2.2982543"
+         width="8.721406"
+         id="rect8569-9-1-3-7"
+         style="fill:#000002;fill-opacity:1" />
+      <rect
+         transform="matrix(0.73988596,0.67273231,-0.67273231,0.73988596,0,0)"
+         y="-7.3037577"
+         x="187.01729"
+         height="2.2982543"
+         width="8.721406"
+         id="rect8569-9-6-1-9-1"
+         style="fill:#000002;fill-opacity:1" />
+    </g>
   </g>
 </svg>
