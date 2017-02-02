@@ -49,17 +49,11 @@ def h_conv(X, W, strides=(1, 1, 1, 1), padding='VALID', max_order=1, name='N'):
                     # Compute Clebsch-Gordon coeff
                     cg = CG(*order_lm_dict[input_order], *order_lm_dict[filter_order], *order_lm_dict[output_order])
                     cg = cg.doit()
-                    # Need to think about whether CG coeff effects real or imaginary filters like sign for circular...
-                    c = cg * W[filter_order]
-                    # fo = output_order - input_order
-                    # c = W[np.abs(fo)]
-                    #s = np.sign(fo)
+                    c = tf.scalar_mul(cg, W[filter_order])
                     # Choose a different filter depending on whether input is real
                     if Xsh[4] == 2:
-                        # Qr += [c[0], -s * c[1]]
-                        # Qi += [c[1], s * c[0]]
-                        Qr += [c[0], -s * c[1]]
-                        Qi += [c[1], s * c[0]]
+                        Qr += [c[0], -c[1]]
+                        Qi += [c[1],  c[0]]
                     else:
                         Qr += [c[0]]
                         Qi += [c[1]]
