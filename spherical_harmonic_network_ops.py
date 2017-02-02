@@ -47,7 +47,10 @@ def h_conv(X, W, strides=(1, 1, 1, 1), padding='VALID', max_order=1, name='N'):
             for input_order in xrange(Xsh[3]):
                 for filter_order in xrange(Wsh[0]):
                     # Compute Clebsch-Gordon coeff
-                    cg = CG(*order_lm_dict[input_order], *order_lm_dict[filter_order], *order_lm_dict[output_order])
+                    cg_input = list(order_lm_dict[input_order])
+                    cg_input += list(order_lm_dict[filter_order])
+                    cg_input += list(order_lm_dict[output_order])
+                    cg = CG(*cg_input)
                     cg = cg.doit()
                     c = tf.scalar_mul(cg, W[filter_order])
                     # Choose a different filter depending on whether input is real
