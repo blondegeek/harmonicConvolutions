@@ -1,7 +1,7 @@
 import numpy as np
 import tensorflow as tf
 from sympy.physics.quantum.cg import CG
-
+from mpmath import spherharm
 
 order_lm_dict = {0: (0, 0),
                  1: (1, -1),
@@ -51,7 +51,7 @@ def h_conv(X, W, strides=(1, 1, 1, 1), padding='VALID', max_order=1, name='N'):
                     cg_input += list(order_lm_dict[filter_order])
                     cg_input += list(order_lm_dict[output_order])
                     cg = CG(*cg_input)
-                    cg = cg.doit()
+                    cg = float(cg.doit())
                     c = tf.scalar_mul(cg, W[filter_order])
                     # Choose a different filter depending on whether input is real
                     if Xsh[4] == 2:
@@ -68,3 +68,110 @@ def h_conv(X, W, strides=(1, 1, 1, 1), padding='VALID', max_order=1, name='N'):
         Rsh = R.get_shape().as_list()
         ns = tf.concat(0, [Rsh[:3], [max_order + 1, 2], [Rsh[3] / (2 * (max_order + 1))]])
         return tf.reshape(R, ns)
+
+
+def get_complex_basis_matrices(filter_size, order=1):
+    """Return complex basis component e^{imt} (ODD sizes only).
+
+    filter_size: int of filter height/width (default 3) CAVEAT: ODD supported
+    order: rotation order (default 1)
+    """
+
+    # Use spherharm .real and .imag and convert to float
+    #
+    #
+
+    k = filter_size
+    radius = (k + 1) / 2
+    n_rings = (radius * (radius + 1) * (radius + 2)) / 6
+
+    lin = np.linspace((1. - k) / 2., (k - 1.) / 2., k)
+    X, Y, Z = np.meshgrid(lin, lin, lin)
+    R = np.sqrt(X ** 2 + Y ** 2 + Z ** 2)
+    unique = np.unique(R)
+
+    theta = np.arccos(Z, R)
+    # why minus?
+    phi = np.arctan2(-Y, X)
+
+    # Real and imaginary mask components
+    rmasks = []
+    imasks = []
+
+    # Make vectorized functions for getting spherical harmonic filters
+    sh_r = lambda l, m, theta, phi: float(spherharm(l, m, theta, phi).real)
+    sh_i = lambda l, m, theta, phi: float(spherharm(l, m, theta, phi).imag)
+    ylm_r = np.vectorize(sh_r)
+    ylm_i = np.vectorize(sh_i)
+
+    for i in xrange(n_rings):
+        l, m = order_lm_dict(order)
+        if order == 0:
+            # For order == 0 there is nonzero weight on the center pixel
+            rmask = (R == unique[i]) * ylm_r(l,m,theta,phi)
+            rmasks.append(to_constant_float(rmask))
+            imask = (R == unique[i]) * ylm_i(l,m,theta,phi)
+            imasks.append(to_constant_float(imask))
+        elif order > 0:
+            # For order > 0 there is zero weights on the center pixel
+            if unique[i] != 0.:
+                rmask = (R == unique[i]) * ylm_r(l,m,theta,phi)
+                rmasks.append(to_constant_float(rmask))
+                imask = (R == unique[i]) * ylm_i(l,m,theta,phi)
+                imasks.append(to_constant_float(imask))
+    rmasks = tf.pack(rmasks, axis=-1)
+    rmasks = tf.reshape(rmasks, [k, k, k, n_rings - (order > 0)])
+    imasks = tf.pack(imasks, axis=-1)
+    imasks = tf.reshape(imasks, [k, k, k, n_rings - (order > 0)])
+    return rmasks, imasks
+
+
+##### FUNCTIONS TO CONSTRUCT STEERABLE FILTERS #####
+def get_filters(R, filter_size, P=None):
+	"""Return a complex filter of the form $u(r,t,psi) = R(r)e^{im(t-psi)}"""
+	filters = {}
+	k = filter_size
+	for m, r in R.iteritems():
+		rsh = r.get_shape().as_list()
+		# Get the basis matrices
+		cosine, sine = get_complex_basis_matrices(k, order=m)
+		cosine = tf.reshape(cosine, tf.pack([k * k, rsh[0]]))
+		sine = tf.reshape(sine, tf.pack([k * k, rsh[0]]))
+
+		# Project taps on to rotational basis
+		r = tf.reshape(r, tf.pack([rsh[0], rsh[1] * rsh[2]]))
+		ucos = tf.reshape(tf.matmul(cosine, r), tf.pack([k, k, rsh[1], rsh[2]]))
+		usin = tf.reshape(tf.matmul(sine, r), tf.pack([k, k, rsh[1], rsh[2]]))
+
+		if P is not None:
+			# Rotate basis matrices
+			ucos = tf.cos(P[m]) * ucos + tf.sin(P[m]) * usin
+			usin = -tf.sin(P[m]) * ucos + tf.cos(P[m]) * usin
+		filters[m] = (ucos, usin)
+	return filters
+
+
+##### CREATING VARIABLES #####
+def to_constant_float(Q):
+    """Converts a numpy tensor to a tf constant float
+
+    Q: numpy tensor
+    """
+    Q = tf.Variable(Q, trainable=False)
+    return tf.to_float(Q)
+
+
+def get_weights(filter_shape, W_init=None, std_mult=0.4, name='W', device='/cpu:0'):
+    """Initialize weights variable with He method
+
+    filter_shape: list of filter dimensions
+    W_init: numpy initial values (default None)
+    std_mult: multiplier for weight standard deviation (default 0.4)
+    name: (default W)
+    device: (default /cpu:0)
+    """
+    with tf.device(device):
+        if W_init == None:
+            stddev = std_mult * np.sqrt(2.0 / np.prod(filter_shape[:3]))
+        return tf.get_variable(name, dtype=tf.float32, shape=filter_shape,
+                               initializer=tf.random_normal_initializer(stddev=stddev))

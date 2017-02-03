@@ -5,8 +5,7 @@ import time
 import numpy as np
 import tensorflow as tf
 import scipy as sp
-
-from harmonic_network_ops import get_weights
+from spherical_harmonic_network_ops import get_weights
 
 """
 Helper functions for spherical harmonic (3D) network.
@@ -48,6 +47,7 @@ def get_bias_dict(n_filters, order, name='b', device='/cpu:0'):
 
 def get_phase_dict(n_in, n_out, order, name='b',device='/cpu:0'):
 	"""Return a dict of phase offsets"""
+	# NEED THREE PHASES IN 3D
 	with tf.device(device):
 		phase_dict = {}
 		for i in xrange(order+1):
@@ -58,3 +58,4 @@ def get_phase_dict(n_in, n_out, order, name='b',device='/cpu:0'):
 				initializer=tf.constant_initializer(init))
 			phase_dict[i] = phase
 	return phase_dict
+
