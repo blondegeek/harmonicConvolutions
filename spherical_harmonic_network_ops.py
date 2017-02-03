@@ -2,6 +2,7 @@ import numpy as np
 import tensorflow as tf
 from sympy.physics.quantum.cg import CG
 from mpmath import spherharm
+from sympy.physics.quantum.spin import Rotation
 
 order_lm_dict = {0: (0, 0),
                  1: (1, -1),
@@ -11,14 +12,21 @@ order_lm_dict = {0: (0, 0),
                  5: (2, -1),
                  6: (2, 0),
                  7: (2, 1),
-                 8: (2, 2)}
+                 8: (2, 2),
+                 9: (3, -3),
+                 10: (3, -2),
+                 11: (3, -1),
+                 12: (3, 0),
+                 13: (3, 1),
+                 14: (3, 2),
+                 15: (3, 3)}
 
 def conv(X, W, strides, padding, name):
     """Shorthand for tf.nn.conv3d"""
     return tf.nn.conv3d(X, W, strides=strides, padding=padding, name=name)
 
 
-def h_conv(X, W, strides=(1, 1, 1, 1), padding='VALID', max_order=1, name='N'):
+def h_conv(X, W, strides=(1, 1, 1, 1, 1, 1), padding='VALID', max_order=1, name='N'):
     """Inter-order (cross-stream) convolutions can be implemented as single
     convolutions. For this we store data as 6D tensors and filters as 8D
     tensors, at convolution, we reshape down to 4D tensors and expand again.
@@ -69,6 +77,64 @@ def h_conv(X, W, strides=(1, 1, 1, 1), padding='VALID', max_order=1, name='N'):
         ns = tf.concat(0, [Rsh[:3], [max_order + 1, 2], [Rsh[3] / (2 * (max_order + 1))]])
         return tf.reshape(R, ns)
 
+##### FUNCTIONS TO CONSTRUCT STEERABLE FILTERS #####
+def get_filters(R, filter_size, P=None):
+    """
+    Return a complex filter of the form $u(r,t,psi) = R(r)e^{im(t-psi)}
+
+    """
+    filters = {}
+    k = filter_size
+    for order, r in R.iteritems():
+        rsh = r.get_shape().as_list()
+        # Get the basis matrices
+        real, imag = get_complex_basis_matrices(k, order=order)
+        real = tf.reshape(real, tf.pack([k * k * k, rsh[0]]))
+        imag = tf.reshape(imag, tf.pack([k * k * k, rsh[0]]))
+
+        # Project rings on to rotational basis
+        r = tf.reshape(r, tf.pack([rsh[0], rsh[1] * rsh[2]]))
+        ureal = tf.reshape(tf.matmul(real, r), tf.pack([k, k, k, rsh[1], rsh[2]]))
+        uimag = tf.reshape(tf.matmul(imag, r), tf.pack([k, k, k, rsh[1], rsh[2]]))
+
+        filters[order] = (ureal, uimag)
+
+    # Each l has three steering angles that must be applied to all m's using
+    # WignerD matrices
+
+    order_max = max(R.keys())
+    l_list = range(order_lm_dict[order_max][0]+1)
+
+    # \sum^{n}_{l=0} 2*l + 1 = (n+1)**2
+
+    # The phase dictionary contains 3 angles for every l
+    if P is not None:
+        for l in l_list:
+            # Let angles for given l
+            alpha, beta, gamma = P[l]
+            # Construct -l, -l+1,...,l-1,l list
+            lin = np.linspace([-l,l,2l+1])
+            # Construct matrix indices for m and mprime
+            m, mp = np.meshgrid(lin,lin)
+            # Wigner D function
+            wigD = lambda l, m, mp, alpha, beta, gamma: Rotation.D(l, m, mp, alpha, beta, gamma).doit()
+            wigD_vectorize = np.vectorize(wigD)
+            # Wigner D matrix
+            D = wigD_vectorize(l, m, mp, alpha, beta, gamma)
+
+            # Apply matrix to all filters
+            # Get real and imaginary filters for a give l
+            real_filters = np.array([filters[order][0] for order in range((l+1)**2-(2l+1),(l+1)**2)])
+            imag_filters = np.array([filters[order][0] for order in range((l+1)**2-(2l+1),(l+1)**2)])
+
+            # Save results from
+            for order in range((l+1)**2-(2l+1),(l+1)**2):
+                L,M = order_lm_dict(order)
+                # Note, this likely won't work because of mixing numpy and tf ops -- will rewrite later
+                filters[order] = (np.sum(np.multiply(D[L + M, :], real_filters), axis=0),
+                                  np.sum(np.multiply(D[L + M, :], imag_filters), axis=0))
+    return filters
+
 
 def get_complex_basis_matrices(filter_size, order=1):
     """Return complex basis component e^{imt} (ODD sizes only).
@@ -76,10 +142,6 @@ def get_complex_basis_matrices(filter_size, order=1):
     filter_size: int of filter height/width (default 3) CAVEAT: ODD supported
     order: rotation order (default 1)
     """
-
-    # Use spherharm .real and .imag and convert to float
-    #
-    #
 
     k = filter_size
     radius = (k + 1) / 2
@@ -124,31 +186,6 @@ def get_complex_basis_matrices(filter_size, order=1):
     imasks = tf.pack(imasks, axis=-1)
     imasks = tf.reshape(imasks, [k, k, k, n_rings - (order > 0)])
     return rmasks, imasks
-
-
-##### FUNCTIONS TO CONSTRUCT STEERABLE FILTERS #####
-def get_filters(R, filter_size, P=None):
-	"""Return a complex filter of the form $u(r,t,psi) = R(r)e^{im(t-psi)}"""
-	filters = {}
-	k = filter_size
-	for m, r in R.iteritems():
-		rsh = r.get_shape().as_list()
-		# Get the basis matrices
-		cosine, sine = get_complex_basis_matrices(k, order=m)
-		cosine = tf.reshape(cosine, tf.pack([k * k, rsh[0]]))
-		sine = tf.reshape(sine, tf.pack([k * k, rsh[0]]))
-
-		# Project taps on to rotational basis
-		r = tf.reshape(r, tf.pack([rsh[0], rsh[1] * rsh[2]]))
-		ucos = tf.reshape(tf.matmul(cosine, r), tf.pack([k, k, rsh[1], rsh[2]]))
-		usin = tf.reshape(tf.matmul(sine, r), tf.pack([k, k, rsh[1], rsh[2]]))
-
-		if P is not None:
-			# Rotate basis matrices
-			ucos = tf.cos(P[m]) * ucos + tf.sin(P[m]) * usin
-			usin = -tf.sin(P[m]) * ucos + tf.cos(P[m]) * usin
-		filters[m] = (ucos, usin)
-	return filters
 
 
 ##### CREATING VARIABLES #####
